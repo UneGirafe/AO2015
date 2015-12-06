@@ -11,3 +11,11 @@
 /Variations.class
 /ZoomWidget.class
 /ZoomWidget$Position.class
+/ZoomWidget$1.class
+/RangeSlider.class
+/RangeSliderUI.class
+/RangeSliderUI$ChangeHandler.class
+/RangeSliderUI$RangeTrackListener.class
+/JRangeSlider$RangeSliderChangeListener.class
+/JRangeSlider.class
+/RangeSlider$RangeSliderChangeListener.class

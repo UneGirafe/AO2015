@@ -30,7 +30,7 @@ class CurveTracer extends JComponent {
 		this.fvar = var;
 		setPreferredSize(new Dimension(400, 300));
 		setOpaque(true);
-		setBackground(Color.green);
+		setBackground(Color.PINK);
 		setForeground(Color.red);
 	}
 
