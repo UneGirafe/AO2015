@@ -3,6 +3,8 @@ package curves;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JComponent;
 
@@ -12,7 +14,7 @@ import javax.swing.JComponent;
  * 
  */
 
-class CurveTracer extends JComponent {
+class CurveTracer extends JComponent implements Observer {
 	/**
 	 * 
 	 */
@@ -98,6 +100,13 @@ class CurveTracer extends JComponent {
 		}
 		if (lastX < (double) width) {
 			g.drawLine((int) lastX, lastY, width, lastY);
+		}
+	}
+
+	@Override
+	public void update(Observable obs, Object arg1) {
+		if (obs instanceof ZoomWidget){
+			
 		}
 	}
 }

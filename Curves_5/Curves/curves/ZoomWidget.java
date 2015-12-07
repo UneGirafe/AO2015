@@ -7,11 +7,6 @@ import java.awt.Insets;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentEvent;
-import java.awt.event.ComponentListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.io.ObjectInputStream.GetField;
 import java.util.Observable;
 
 import javax.swing.JLabel;
@@ -23,15 +18,12 @@ import javax.swing.JButton;
 public class ZoomWidget extends Observable {
 
 	private JPanel widget;
-	private JPanel xLine;
 	
 	private JTextField xMin;
 	private JTextField xMax;
 	
 	private JLabel xLabel;
-	
-	private JButton applyButton;
-	
+		
 	private double newXmin;
 	private double newXmax;
 	
