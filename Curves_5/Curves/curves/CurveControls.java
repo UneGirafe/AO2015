@@ -27,7 +27,7 @@ class CurveControls extends JPanel {
 		JPanel precision = new JPanel();
 		JLabel precisionL = new JLabel("Precision");
 		cb = new JComboBox<>(nStepsChoices);
-		zoom = new ZoomWidget();
+		zoom = new ZoomWidget(var, f);
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
