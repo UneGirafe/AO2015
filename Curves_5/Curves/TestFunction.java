@@ -16,6 +16,6 @@ public class TestFunction {
 		Function f = 
 		times(X, compose(SIN, times(constant(2.), X)));
 		//Function f = Functions.parse("/ 1 * x x");
-		CurveApplication.start(new FunVariations(f, -5, 10));
+		CurveApplication.start(new FunVariations(f, -10, 10));
 	}
 }
