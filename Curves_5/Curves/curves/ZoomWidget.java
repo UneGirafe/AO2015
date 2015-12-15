@@ -5,8 +5,8 @@ import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.Observable;
 
 import javax.swing.JLabel;
@@ -28,7 +28,7 @@ public class ZoomWidget extends Observable {
 	private double xMax;
 	
 
-	public ZoomWidget(/*final FunctionVariations var,*/ final CurveFrame f) {
+	public ZoomWidget(/*final FunctionVariations var, final CurveFrame f*/) {
 		widget = new JPanel();
 		widget.setLayout(new GridBagLayout());
 	    GridBagConstraints c = new GridBagConstraints();
@@ -41,9 +41,9 @@ public class ZoomWidget extends Observable {
 		
 		JButton applyButton = new JButton("Apply");
 		
-		applyButton.addActionListener(new ActionListener() {
- 
-	        public void actionPerformed(ActionEvent e)
+		applyButton.addMouseListener(new MouseAdapter() { 
+	       @Override
+			public void mouseClicked(MouseEvent e)
 	        {	
 				try {
 					double newXmin;
@@ -68,8 +68,8 @@ public class ZoomWidget extends Observable {
 				var.setXmax(newXmax);
 				
 				var.tabulate(var.getStepNumber());*/
-				f.infos.update();
-				f.repaint();	
+			/*	f.infos.update();
+				f.repaint();*/	
 	        }
 	    });
 		

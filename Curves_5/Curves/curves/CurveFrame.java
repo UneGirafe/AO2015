@@ -93,7 +93,6 @@ public class CurveFrame extends JFrame  implements Observer {
 		if (o instanceof Variations){
 			infos.update();
 			repaint();
-			
 		}
 		
 	}
