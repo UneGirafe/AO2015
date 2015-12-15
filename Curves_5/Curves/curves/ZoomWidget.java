@@ -19,23 +19,23 @@ public class ZoomWidget extends Observable {
 
 	private JPanel widget;
 	
-	private JTextField xMin;
-	private JTextField xMax;
+	private JTextField xMinField;
+	private JTextField xMaxField;
 	
 	private JLabel xLabel;
 		
-	private double newXmin;
-	private double newXmax;
+	private double xMin;
+	private double xMax;
 	
 
-	public ZoomWidget(final FunctionVariations var, final CurveFrame f) {
+	public ZoomWidget(/*final FunctionVariations var,*/ final CurveFrame f) {
 		widget = new JPanel();
 		widget.setLayout(new GridBagLayout());
 	    GridBagConstraints c = new GridBagConstraints();
 	    c.insets = new Insets(5,5,5,5);
 
-		xMin = new JTextField("-5", 5);
-		xMax = new JTextField("5", 5);
+		xMinField = new JTextField("-5", 5);
+		xMaxField = new JTextField("5", 5);
 
 		xLabel = new JLabel("X");
 		
@@ -46,8 +46,14 @@ public class ZoomWidget extends Observable {
 	        public void actionPerformed(ActionEvent e)
 	        {	
 				try {
-				    newXmin = Double.parseDouble(xMin.getText());
-				    newXmax = Double.parseDouble(xMax.getText());
+					double newXmin;
+					double newXmax;
+				    newXmin = Double.parseDouble(xMinField.getText());
+				    newXmax = Double.parseDouble(xMaxField.getText());
+					setXMin(newXmin);
+					setXMax(newXmax);
+				    setChanged();
+					notifyObservers(this);
 					
 				} catch (NumberFormatException exception) {
 					System.out.println("Please enter a double value");
@@ -55,17 +61,15 @@ public class ZoomWidget extends Observable {
 				    // handle the error
 				}
 				
-	            System.out.println("Applying Zoom: X[" + xMin.getText() + ";" + xMax.getText()
-					+ "] Y[" + var.getYmin() + ";" + var.getYmax() + "]");
+	           /* System.out.println("Applying Zoom: X[" + xMinField.getText() + ";" + xMaxField.getText()
+					+ "] Y[" + var.getYmin() + ";" + var.getYmax() + "]");*/
 				
-				var.setXmin(newXmin);
+/*				var.setXmin(newXmin);
 				var.setXmax(newXmax);
 				
-				var.tabulate(var.getStepNumber());
+				var.tabulate(var.getStepNumber());*/
 				f.infos.update();
-				f.repaint();
-				
-				
+				f.repaint();	
 	        }
 	    });
 		
@@ -78,10 +82,10 @@ public class ZoomWidget extends Observable {
 		widget.add(xLabel);
 		
 		c.gridx = 1;
-		widget.add(xMin);
+		widget.add(xMinField);
 		
 		c.gridx = 2;
-		widget.add(xMax);
+		widget.add(xMaxField);
 		
 		c.gridx = 0;
 		c.gridy = 1;
@@ -90,7 +94,25 @@ public class ZoomWidget extends Observable {
 	}
 
 
+	public double getXMin(){
+		return xMin;
+	}
+	
+	public double getXMax(){
+		return xMax;
+	}
+	
+	public void setXMin(double newXmin){
+		xMin = newXmin;
+	}
+	
+	public void setXMax(double newXmax){
+		xMax = newXmax;
+	}
+	
+	
 	public JPanel getWidget() {
 		return widget;
 	}
+
 }

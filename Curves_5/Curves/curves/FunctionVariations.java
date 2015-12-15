@@ -1,5 +1,6 @@
 package curves;
 
+
 /**
  * represents the (discretized) variations of a numeric function .
  *  @see ExampleTrigo
@@ -46,5 +47,4 @@ public interface FunctionVariations {
 
 	/** computes the array of the variations of fun */
 	public void tabulate(int nbStep);
-
 }

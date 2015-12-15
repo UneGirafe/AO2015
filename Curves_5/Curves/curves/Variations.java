@@ -1,5 +1,8 @@
 package curves;
 
+import java.util.Observable;
+import java.util.Observer;
+
 /**
  A standard implementation of FunVariations.
  Needs to be extended by a definition of fun to  work effectively.
@@ -14,7 +17,7 @@ package curves;
  * 
  */
 
-public abstract class Variations implements FunctionVariations {
+public abstract class Variations extends Observable implements FunctionVariations, Observer {
 	private double xmin, xmax, ymin, ymax;
 
 	private double[] table;
@@ -22,6 +25,7 @@ public abstract class Variations implements FunctionVariations {
 	private int nbStep;
 
 	private double step;
+	
 
 	protected abstract double fun(double x);
 
@@ -87,6 +91,17 @@ public abstract class Variations implements FunctionVariations {
 			else if (val > ymax)
 				ymax = val;
 		}
+	}
+	
+	public void update(Observable obs, Object obj){
+		if (obs instanceof ZoomWidget)
+		setXmin(((ZoomWidget) obs).getXMin());
+		setXmax(((ZoomWidget) obs).getXMax());
+		tabulate(getStepNumber());
+		System.out.println("Applying Zoom");
+
+		setChanged();
+		notifyObservers();
 	}
 
 }

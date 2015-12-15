@@ -4,6 +4,8 @@ import java.awt.BorderLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
+import java.util.Observable;
+import java.util.Observer;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -16,7 +18,7 @@ import javax.swing.JPanel;
 /**
  * @author casteran
  */
-public class CurveFrame extends JFrame {
+public class CurveFrame extends JFrame  implements Observer {
 	/**
 	 * 
 	 */
@@ -84,5 +86,15 @@ public class CurveFrame extends JFrame {
 		pack();
 		infos.update();
 		setVisible(true);
+	}
+
+	@Override
+	public void update(Observable o, Object arg) {
+		if (o instanceof Variations){
+			infos.update();
+			repaint();
+			
+		}
+		
 	}
 }

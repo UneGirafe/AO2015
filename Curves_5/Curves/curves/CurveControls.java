@@ -2,6 +2,7 @@ package curves;
 
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.Observer;
 
 import javax.swing.BoxLayout;
 import javax.swing.JComboBox;
@@ -27,7 +28,8 @@ class CurveControls extends JPanel {
 		JPanel precision = new JPanel();
 		JLabel precisionL = new JLabel("Precision");
 		cb = new JComboBox<>(nStepsChoices);
-		zoom = new ZoomWidget(var, f);
+		zoom = new ZoomWidget(f);
+		zoom.addObserver((Observer) var);
 		
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
